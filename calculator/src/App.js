@@ -1,16 +1,17 @@
 import logo from './logo.svg';
 import iphone from './images/fake-screen-protector.jpg'
 import './App.css';
+import React from 'react';
+import CalcButtons from './components/CalcButtons/CalcButtons'
+
+
 
 function App() {
   return (
     <div className="App">
+      <CalcButtons /> 
       <header className="App-header">
         <img src={iphone} className="iphone-screen" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-
       </header>
     </div>
   );
