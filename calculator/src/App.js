@@ -9,9 +9,10 @@ import CalcButtons from './components/CalcButtons/CalcButtons'
 function App() {
   return (
     <div className="App">
-      <CalcButtons /> 
       <header className="App-header">
-        <img src={iphone} className="iphone-screen" alt="logo" />
+        <div className="calculator">
+          <CalcButtons />
+        </div>   
       </header>
     </div>
   );
