@@ -1,1 +1,4 @@
-.CalcButtons {}
+.calc-buttons {
+    position: relative;
+    top: 150px;
+}

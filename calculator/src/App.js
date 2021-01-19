@@ -11,7 +11,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="calculator">
-          <CalcButtons />
+          <div className="display">
+            <p>Sample Display</p>  
+          </div>  
+          <div className="buttons-container">
+              <CalcButtons className="calc-buttons"/>
+          </div>
+          
         </div>   
       </header>
     </div>

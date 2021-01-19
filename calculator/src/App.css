@@ -20,6 +20,17 @@
   height: 1000px
 }
 
+.display {
+  position: relative;
+  top: 150px;
+}
+
+.buttons-container {
+  position: relative;
+  top: 200px
+}
+
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
