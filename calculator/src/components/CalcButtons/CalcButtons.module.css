@@ -1,0 +1,32 @@
+button {
+    border-radius: 50%;
+}
+
+.parent-of-buttons {
+  margin-top: 50px;
+  width: 350px;
+
+}
+
+
+.btn-group {
+  width: 100%;
+  
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+
+.lg-button {
+  background-color: #D4D4D2;
+  color: #1C1C1C;
+}
+
+.dg-button {
+  background-color: #1c1c1c;
+  color: white;
+}
+
+.y-button {
+  background-color: #FF9500;
+}

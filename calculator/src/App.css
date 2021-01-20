@@ -16,8 +16,9 @@
 .calculator {
   position: relative;
   background-image: url("images/fake-screen-protector.jpg");
-  width: 1000px;
-  height: 1000px
+  width: 500px;
+  height: 1000px;
+  background-position: center;
 }
 
 .display {
@@ -27,8 +28,13 @@
 
 .buttons-container {
   position: relative;
-  top: 200px
+  top: 200px;
+  width:100%;
+  display: flex;
+  justify-content: center;
 }
+
+
 
 
 .App-header {
