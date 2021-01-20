@@ -5,6 +5,14 @@ import { getElementError } from '@testing-library/react';
 
 class CalcButtons extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      display: "None"
+    }
+  }
+
+
   render() {
     return (
 
