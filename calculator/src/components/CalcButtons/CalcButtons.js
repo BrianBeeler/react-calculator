@@ -5,10 +5,10 @@ import styles from './CalcButtons.module.css';
 const CalcButtons = () => (
   <div className={ styles['parent-of-buttons'] } >
     <div className={ styles['btn-group'] }>
-      <button type="button" className={ styles['lg-button'] }>C</button>
+      <button type="button" className={ styles['lg-button'] }>AC</button>
       <button type="button" className={ styles['lg-button'] }>+/-</button>
       <button type="button" className={ styles['lg-button'] }>%</button>
-      <button type="button" className={ styles['y-button']  }>/</button>
+      <button type="button" className={ styles['y-button']  }>÷</button>
     </div>
     <div className={ styles['btn-group'] }>
       <button type="button" className={ styles['dg-button'] }>7</button>
