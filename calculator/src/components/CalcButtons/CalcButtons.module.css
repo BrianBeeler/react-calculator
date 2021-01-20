@@ -8,6 +8,10 @@ button {
 
 }
 
+.double-long {
+    width: 88px
+}
+
 .parent-of-buttons {
   margin-top: 50px;
   width: 350px;
