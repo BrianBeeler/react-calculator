@@ -9,11 +9,14 @@ button {
 }
 
 .double-long {
-    width: 88px
+    width: 100px;
+    background-color: #1c1c1c;
+    color: white;
+    margin-right: 50px;
 }
 
 .parent-of-buttons {
-  margin-top: 50px;
+  margin-top: 0px;
   width: 350px;
 
 }

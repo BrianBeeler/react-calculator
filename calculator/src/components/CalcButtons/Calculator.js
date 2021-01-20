@@ -17,7 +17,7 @@ class Calculator extends Component {
     return (
       <div>
         <div className="display">
-          <p>Sample Display</p>  
+          <p>{this.state.display}</p>  
         </div> 
 
         <div className="buttons-container">
@@ -33,27 +33,27 @@ class Calculator extends Component {
             
             {/* Row 2 */}
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber} >7</button>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber } >8</button>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber } >9</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(7) }} >7</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(8) } }>8</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(9) } } >9</button>
               <button type="button" className={ styles['y-button']}  onClick={applyMultiplication}>X</button>
             </div>
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button'] }  onClick={enterNumber}>4</button>
-              <button type="button" className={ styles['dg-button'] } onClick={enterNumber}>5</button>
-              <button type="button" className={ styles['dg-button'] } onClick={enterNumber}>6</button>
+              <button type="button" className={ styles['dg-button'] }  onClick={() =>{ enterNumber(4) }}>4</button>
+              <button type="button" className={ styles['dg-button'] } onClick={() =>{ enterNumber(5)  }}>5</button>
+              <button type="button" className={ styles['dg-button'] } onClick={() =>{ enterNumber(6)  }}>6</button>
               <button type="button" className={ styles['y-button']  }  onClick={applySubtraction}>-</button>
             </div>
 
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber}>1</button>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber}>2</button>
-              <button type="button" className={ styles['dg-button']} onClick={enterNumber}>3</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(1) }}>1</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(2) }}>2</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(3) }}>3</button>
               <button type="button" className={ styles['y-button']} onClick={applyAddition}>+</button>
             </div>
             
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button', 'double-long']} onClick={enterNumber}>0</button>
+              <button type="button" className={ styles['dg-button', 'double-long']} onClick={() =>{ enterNumber(0) }}>0</button>
               <button type="button" className={ styles['dg-button']} onClick={addDecimal}>.</button>
               <button type="button" className={ styles['y-button']} onClick={applyEquals}>=</button>
             </div>
@@ -79,8 +79,8 @@ const applyModulus  = () => {
 const applyAddition  = () => {
   console.log("Apply addition")
 }
-const enterNumber  = () => {
-  console.log("Enter number")
+const enterNumber  = (number) => {
+  console.log("Enter number",number)
 }
 const applyMultiplication  = () => {
   console.log("Apply multiplication")
