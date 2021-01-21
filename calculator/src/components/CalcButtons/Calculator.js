@@ -13,6 +13,14 @@ class Calculator extends Component {
   }
 
 
+  enterNumber  = (number) => {
+    console.log("Enter number",number, this)
+    this.setState({
+      display: number
+    })
+  }
+
+
   render() {
     return (
       <div>
@@ -33,27 +41,27 @@ class Calculator extends Component {
             
             {/* Row 2 */}
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(7) }} >7</button>
-              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(8) } }>8</button>
-              <button type="button" className={ styles['dg-button']} onClick={ () =>{ enterNumber(9) } } >9</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(7) }} >7</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(8) } }>8</button>
+              <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(9) } } >9</button>
               <button type="button" className={ styles['y-button']}  onClick={applyMultiplication}>X</button>
             </div>
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button'] }  onClick={() =>{ enterNumber(4) }}>4</button>
-              <button type="button" className={ styles['dg-button'] } onClick={() =>{ enterNumber(5)  }}>5</button>
-              <button type="button" className={ styles['dg-button'] } onClick={() =>{ enterNumber(6)  }}>6</button>
+              <button type="button" className={ styles['dg-button'] }  onClick={() =>{ this.enterNumber(4) }}>4</button>
+              <button type="button" className={ styles['dg-button'] } onClick={() =>{ this.enterNumber(5)  }}>5</button>
+              <button type="button" className={ styles['dg-button'] } onClick={() =>{ this.enterNumber(6)  }}>6</button>
               <button type="button" className={ styles['y-button']  }  onClick={applySubtraction}>-</button>
             </div>
 
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(1) }}>1</button>
-              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(2) }}>2</button>
-              <button type="button" className={ styles['dg-button']} onClick={() =>{ enterNumber(3) }}>3</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(1) }}>1</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(2) }}>2</button>
+              <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(3) }}>3</button>
               <button type="button" className={ styles['y-button']} onClick={applyAddition}>+</button>
             </div>
             
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['dg-button', 'double-long']} onClick={() =>{ enterNumber(0) }}>0</button>
+              <button type="button" className={ styles['dg-button', 'double-long']} onClick={() =>{ this.enterNumber(0) }}>0</button>
               <button type="button" className={ styles['dg-button']} onClick={addDecimal}>.</button>
               <button type="button" className={ styles['y-button']} onClick={applyEquals}>=</button>
             </div>
@@ -67,21 +75,28 @@ class Calculator extends Component {
 
 // Click Handlers
 
-const allClear = () => {
+const _allClear = () => {
   console.log("Allclear")
 }
-const reverseSign = () => {
+const allClear = _allClear.bind(this)
+
+const _reverseSign = () => {
   console.log("Reverse sign")
 }
+const reverseSign = _reverseSign.bind(this)
+
+
 const applyModulus  = () => {
   console.log("Apply Mod")
 }
 const applyAddition  = () => {
   console.log("Apply addition")
 }
-const enterNumber  = (number) => {
-  console.log("Enter number",number)
-}
+
+
+
+
+
 const applyMultiplication  = () => {
   console.log("Apply multiplication")
 }
@@ -99,6 +114,9 @@ const addDecimal  = () => {
 const applyEquals = () => {
   console.log("apply equals")
 }
+
+
+
 
 
 Calculator.propTypes = {};
