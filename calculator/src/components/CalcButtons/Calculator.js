@@ -10,7 +10,8 @@ class Calculator extends Component {
     this.state = {
       display: 0,
       currentOperator: null,
-      operationNumber: null
+      operationNumber: null,
+      firstClick: true
     }
   }
 
@@ -67,7 +68,7 @@ class Calculator extends Component {
   }
 
   applyOperation() {
-    debugger; 
+ 
     let newDisplay = this.state.display;
 
     if (this.state.currentOperator === 'addition') {
@@ -88,26 +89,34 @@ class Calculator extends Component {
     }
 
     this.setState({
-      display: newDisplay
+      display: newDisplay,
+      firstClick: true
     })
   }
 
     
 
   enterNumber  = (number) => {
+
+    debugger;
+
     if (this.state.display === 0 || this.state.display === "0") {
       console.log("should run")
       this.state.display = ''
     }
 
-    if (this.state.currentOperator) {
+    if (this.state.currentOperator && this.state.firstClick) {
       this.setState({
         operationNumber: this.state.display,
         display: number,
+        firstClick: false
       })
+
+
+
     }
 
-    else if ( !isNaN(this.state.display) || this.state.display === '') {
+    else if ( !isNaN(this.state.display) || this.state.display === '' ) {
       console.log("should also run", number)
       number = this.state.display+""+number
       this.setState({
@@ -122,7 +131,8 @@ class Calculator extends Component {
     this.setState({
       display: 0,
       currentOperator: null,
-      operationNumber: null
+      operationNumber: null,
+      firstClick: true
     })
     console.log("Allclear")
   }
@@ -147,7 +157,10 @@ class Calculator extends Component {
   }
 
   applyAddition  = () => {
-    
+
+    console.log("addition clicked");
+    debugger;
+
     if (this.state.operationNumber && this.state.currentOperator) {
       this.applyOperation()
     }
