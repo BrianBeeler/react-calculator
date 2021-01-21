@@ -8,8 +8,9 @@ class Calculator extends Component {
   constructor() {
     super()
     this.state = {
-      display: "None",
+      display: 0,
       currentOperator: null,
+      operationNumber: null
     }
   }
 
@@ -65,24 +66,66 @@ class Calculator extends Component {
     )
   }
 
+  applyOperation() {
+    debugger; 
+    let newDisplay = this.state.display;
 
-
-  enterNumber  = (number) => {
-    
-    if ( !isNaN(this.state.display) ) {
-      number = this.state.display+""+number
+    if (this.state.currentOperator = 'addition') {
+      newDisplay = this.state.display*1 + this.state.operationNumber
     }
-    
+    else if (this.state.currentOperator = 'division') {
+      newDisplay = this.state.display*1 % this.state.operationNumber
+    }
+    else if (this.state.currentOperator = 'multiplication' ) {
+      newDisplay = this.state.display*1 * this.state.operationNumber
+    }
+    else if (this.state.currentOperator = 'subtraction') {
+      newDisplay = this.state.display*1 - this.state.operationNumber
+    } 
     this.setState({
-      display: number
+      display: newDisplay
     })
   }
 
+    
+
+  enterNumber  = (number) => {
+    if (this.state.display === 0 || this.state.display === "0") {
+      console.log("should run")
+      this.state.display = ''
+    }
+
+    if (this.state.currentOperator) {
+      this.setState({
+        operationNumber: number
+      })
+    }
+
+    else if ( !isNaN(this.state.display) || this.state.display === '') {
+      console.log("should also run", number)
+      number = this.state.display+""+number
+      this.setState({
+        display: number
+      })
+    }
+    
+
+  }
+
   allClear = () => {
+    this.setState({
+      display: 0,
+      currentOperator: null,
+      operationNumber: null
+    })
     console.log("Allclear")
   }
 
   reverseSign = () => {
+    this.setState({
+      display: this.state.display*-1
+    })
+
     console.log("Reverse sign")
   }
 
@@ -93,6 +136,11 @@ class Calculator extends Component {
   }
 
   applyAddition  = () => {
+    
+    if (this.state.operationNumber && this.state.currentOperator) {
+      this.applyOperation()
+    }
+
     this.setState({
       currentOperator: 'addition'
     })
@@ -112,7 +160,7 @@ class Calculator extends Component {
 
   applyDevision = () => {
     this.setState({
-      currentOperator: 'devision'
+      currentOperator: 'division'
     })
   }
 
