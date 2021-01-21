@@ -8,16 +8,9 @@ class Calculator extends Component {
   constructor() {
     super()
     this.state = {
-      display: "None"
+      display: "None",
+      currentOperator: null,
     }
-  }
-
-
-  enterNumber  = (number) => {
-    console.log("Enter number",number, this)
-    this.setState({
-      display: number
-    })
   }
 
 
@@ -33,10 +26,10 @@ class Calculator extends Component {
 
             {/* Row 1 */}
             <div className={ styles['btn-group'] }>
-              <button type="button" className={ styles['lg-button']} onClick={allClear}>AC</button>
-              <button type="button" className={ styles['lg-button']} onClick={reverseSign}>+/-</button>
-              <button type="button" className={ styles['lg-button']} onClick={applyModulus}>%</button>
-              <button type="button" className={ styles['y-button']} onClick={applyDevision}>÷</button>
+              <button type="button" className={ styles['lg-button']} onClick={this.allClear}>AC</button>
+              <button type="button" className={ styles['lg-button']} onClick={this.reverseSign}>+/-</button>
+              <button type="button" className={ styles['lg-button']} onClick={this.applyModulus}>%</button>
+              <button type="button" className={ styles['y-button']} onClick={this.applyDevision}>÷</button>
             </div>
             
             {/* Row 2 */}
@@ -44,26 +37,26 @@ class Calculator extends Component {
               <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(7) }} >7</button>
               <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(8) } }>8</button>
               <button type="button" className={ styles['dg-button']} onClick={ () =>{ this.enterNumber(9) } } >9</button>
-              <button type="button" className={ styles['y-button']}  onClick={applyMultiplication}>X</button>
+              <button type="button" className={ styles['y-button']}  onClick={this.applyMultiplication}>X</button>
             </div>
             <div className={ styles['btn-group'] }>
               <button type="button" className={ styles['dg-button'] }  onClick={() =>{ this.enterNumber(4) }}>4</button>
               <button type="button" className={ styles['dg-button'] } onClick={() =>{ this.enterNumber(5)  }}>5</button>
               <button type="button" className={ styles['dg-button'] } onClick={() =>{ this.enterNumber(6)  }}>6</button>
-              <button type="button" className={ styles['y-button']  }  onClick={applySubtraction}>-</button>
+              <button type="button" className={ styles['y-button']  }  onClick={this.applySubtraction}>-</button>
             </div>
 
             <div className={ styles['btn-group'] }>
               <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(1) }}>1</button>
               <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(2) }}>2</button>
               <button type="button" className={ styles['dg-button']} onClick={() =>{ this.enterNumber(3) }}>3</button>
-              <button type="button" className={ styles['y-button']} onClick={applyAddition}>+</button>
+              <button type="button" className={ styles['y-button']} onClick={this.applyAddition}>+</button>
             </div>
             
             <div className={ styles['btn-group'] }>
               <button type="button" className={ styles['dg-button', 'double-long']} onClick={() =>{ this.enterNumber(0) }}>0</button>
-              <button type="button" className={ styles['dg-button']} onClick={addDecimal}>.</button>
-              <button type="button" className={ styles['y-button']} onClick={applyEquals}>=</button>
+              <button type="button" className={ styles['dg-button']} onClick={this.addDecimal}>.</button>
+              <button type="button" className={ styles['y-button']} onClick={this.applyEquals}>=</button>
             </div>
             
           </div>
@@ -71,53 +64,68 @@ class Calculator extends Component {
       </div>
     )
   }
+
+
+
+  enterNumber  = (number) => {
+    
+    if ( !isNaN(this.state.display) ) {
+      number = this.state.display+""+number
+    }
+    
+    this.setState({
+      display: number
+    })
+  }
+
+  allClear = () => {
+    console.log("Allclear")
+  }
+
+  reverseSign = () => {
+    console.log("Reverse sign")
+  }
+
+  applyModulus  = () => {
+    this.setState({
+      currentOperator: 'modulus'
+    })
+  }
+
+  applyAddition  = () => {
+    this.setState({
+      currentOperator: 'addition'
+    })
+  }
+
+  applyMultiplication  = () => {
+    this.setState({
+      currentOperator: 'multiplication'
+    })
+  }
+
+  applySubtraction  = () => {
+    this.setState({
+      currentOperator: 'subtraction'
+    })
+  }
+
+  applyDevision = () => {
+    this.setState({
+      currentOperator: 'devision'
+    })
+  }
+
+  addDecimal  = () => {
+  }
+
+  applyEquals = () => {
+    console.log("apply equals")
+  }
+
 };
 
 // Click Handlers
-
-const _allClear = () => {
-  console.log("Allclear")
-}
-const allClear = _allClear.bind(this)
-
-const _reverseSign = () => {
-  console.log("Reverse sign")
-}
-const reverseSign = _reverseSign.bind(this)
-
-
-const applyModulus  = () => {
-  console.log("Apply Mod")
-}
-const applyAddition  = () => {
-  console.log("Apply addition")
-}
-
-
-
-
-
-const applyMultiplication  = () => {
-  console.log("Apply multiplication")
-}
-const applySubtraction  = () => {
-  console.log("apply subtraction")
-}
-
-const applyDevision = () => {
-  console.log("apply devision")
-}
-
-const addDecimal  = () => {
-  console.log("add decimal")
-}
-const applyEquals = () => {
-  console.log("apply equals")
-}
-
-
-
-
 
 Calculator.propTypes = {};
 
