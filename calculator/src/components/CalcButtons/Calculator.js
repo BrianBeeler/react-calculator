@@ -98,8 +98,6 @@ class Calculator extends Component {
 
   enterNumber  = (number) => {
 
-    debugger;
-
     if (this.state.display === 0 || this.state.display === "0") {
       console.log("should run")
       this.state.display = ''
@@ -158,9 +156,6 @@ class Calculator extends Component {
 
   applyAddition  = () => {
 
-    console.log("addition clicked");
-    debugger;
-
     if (this.state.operationNumber && this.state.currentOperator) {
       this.applyOperation()
     }
@@ -204,9 +199,23 @@ class Calculator extends Component {
   }
 
   addDecimal  = () => {
+    if (this.state.display > 0 || this.state.display < 0) {
+      this.state.display = this.state.display+''+'.';
+    }
+
   }
 
+
   applyEquals = () => {
+
+    if (this.state.operationNumber && this.state.currentOperator) {
+      this.applyOperation()
+    }
+    this.setState({
+      currentOperator: null,
+      operationNumber: null,
+    })
+
     console.log("apply equals")
   }
 
