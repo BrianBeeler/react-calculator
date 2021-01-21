@@ -71,7 +71,7 @@ class Calculator extends Component {
     let newDisplay = this.state.display;
 
     if (this.state.currentOperator = 'addition') {
-      newDisplay = this.state.display*1 + this.state.operationNumber
+      newDisplay = this.state.display*1 + 1*this.state.operationNumber
     }
     else if (this.state.currentOperator = 'division') {
       newDisplay = this.state.display*1 % this.state.operationNumber
@@ -97,7 +97,8 @@ class Calculator extends Component {
 
     if (this.state.currentOperator) {
       this.setState({
-        operationNumber: number
+        operationNumber: this.state.display,
+        display: number,
       })
     }
 
