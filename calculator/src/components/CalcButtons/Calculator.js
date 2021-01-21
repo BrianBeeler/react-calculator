@@ -74,14 +74,19 @@ class Calculator extends Component {
       newDisplay = this.state.display*1 + 1*this.state.operationNumber
     }
     else if (this.state.currentOperator === 'division') {
-      newDisplay = this.state.display*1 % this.state.operationNumber
+      newDisplay =  1*this.state.operationNumber / this.state.display*1
     }
     else if (this.state.currentOperator === 'multiplication' ) {
-      newDisplay = this.state.display*1 * this.state.operationNumber
+      newDisplay = this.state.display*1 * 1*this.state.operationNumber
     }
     else if (this.state.currentOperator === 'subtraction') {
-      newDisplay =  1*this.state.operationNumber - this.state.display*1 
+      newDisplay =  1*this.state.operationNumber - 1*this.state.display 
     } 
+
+    else if (this.state.currentOperator === 'modulus') {
+      newDisplay = (1*this.state.operationNumber) % (1*this.state.display)
+    }
+
     this.setState({
       display: newDisplay
     })
@@ -131,6 +136,11 @@ class Calculator extends Component {
   }
 
   applyModulus  = () => {
+
+    if (this.state.operationNumber && this.state.currentOperator) {
+      this.applyOperation()
+    }
+
     this.setState({
       currentOperator: 'modulus'
     })
@@ -148,6 +158,11 @@ class Calculator extends Component {
   }
 
   applyMultiplication  = () => {
+
+    if (this.state.operationNumber && this.state.currentOperator) {
+      this.applyOperation()
+    }
+
     this.setState({
       currentOperator: 'multiplication'
     })
@@ -165,6 +180,11 @@ class Calculator extends Component {
   }
 
   applyDevision = () => {
+
+    if (this.state.operationNumber && this.state.currentOperator) {
+      this.applyOperation()
+    }
+
     this.setState({
       currentOperator: 'division'
     })
