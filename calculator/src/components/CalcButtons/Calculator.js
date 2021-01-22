@@ -23,13 +23,14 @@ class Calculator extends Component {
           <p>{this.state.display}</p>  
         </div> 
         <div className={ styles["phone-bg-color"] } style={{
-
-          position: 'absolute',
-          width: '450px',
-          height: '815px',
-          left: '20px',
-          backgroundColor: 'azure',
-          zIndex: -1
+          position: "absolute",
+          width: "450px",
+          height: "970px",
+          backgroundColor: "azure",
+          zIndex: "-1",
+          top: "15px",
+          left: "24px",
+          borderRadius: "70px",
         }}></div>
         <div className="buttons-container">
           <div className={ styles['parent-of-buttons'] } >
