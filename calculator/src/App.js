@@ -8,10 +8,13 @@ import Calculator from './components/CalcButtons/Calculator'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header" style={{
-        backgroundColor: '#add8e6'
-      }}>
+    <div className="App" style={{
+      backgroundColor: '#add8e6',
+      zIndex: '-5',
+      position: 'absolute',
+      width: '100%',
+    }}>
+      <header className="App-header" >
         <div className="calculator">
           <Calculator />       
         </div>   
