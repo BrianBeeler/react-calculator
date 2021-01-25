@@ -96,6 +96,10 @@ class Calculator extends Component {
     else if (this.state.currentOperator === 'modulus') {
       newDisplay = (1*this.state.operationNumber) % (1*this.state.display)
     }
+    
+    
+
+    newDisplay = this.checkOverflow(newDisplay)
 
     this.setState({
       display: newDisplay,
@@ -126,12 +130,23 @@ class Calculator extends Component {
     else if ( !isNaN(this.state.display) || this.state.display === '' ) {
       console.log("should also run", number)
       number = this.state.display+""+number
+      number = this.checkOverflow(number)
       this.setState({
         display: number
       })
     }
     
 
+  }
+
+
+  checkOverflow = (display) => {
+    if ( (display+"").length > 9 ) {
+      return "Overflow Error"
+    }
+    else {
+      return display
+    }
   }
 
   allClear = () => {
@@ -145,11 +160,13 @@ class Calculator extends Component {
   }
 
   reverseSign = () => {
+    let display = this.state.display*-1
+    display = this.checkOverflow(display)
+
     this.setState({
-      display: this.state.display*-1
+      display: display
     })
 
-    console.log("Reverse sign")
   }
 
   applyModulus  = () => {
@@ -209,9 +226,15 @@ class Calculator extends Component {
 
   addDecimal  = () => {
     if (this.state.display > 0 || this.state.display < 0) {
-      this.state.display = this.state.display+''+'.';
+      if (!this.state.display.includes(".")) {
+        let display = this.state.display+''+'.'
+        display = this.checkOverflow(display)
+        
+        this.setState({
+          display: display
+        })
+      }
     }
-
   }
 
 
