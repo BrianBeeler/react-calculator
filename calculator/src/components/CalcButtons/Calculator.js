@@ -78,16 +78,17 @@ class Calculator extends Component {
 
   applyOperation() {
  
+
     let newDisplay = this.state.display;
 
     if (this.state.currentOperator === 'addition') {
       newDisplay = this.state.display*1 + 1*this.state.operationNumber
     }
     else if (this.state.currentOperator === 'division') {
-      newDisplay =  1*this.state.operationNumber / this.state.display*1
+      newDisplay =  (1*this.state.operationNumber) / (this.state.display*1)
     }
     else if (this.state.currentOperator === 'multiplication' ) {
-      newDisplay = this.state.display*1 * 1*this.state.operationNumber
+      newDisplay = (this.state.display*1) * (1*this.state.operationNumber)
     }
     else if (this.state.currentOperator === 'subtraction') {
       newDisplay =  1*this.state.operationNumber - 1*this.state.display 
@@ -101,6 +102,13 @@ class Calculator extends Component {
 
     newDisplay = this.checkOverflow(newDisplay)
 
+
+    // Floating point errors
+    if (newDisplay % 1 < 0.00000001) {
+      debugger;
+      newDisplay = Math.round(newDisplay)
+    }
+
     this.setState({
       display: newDisplay,
       firstClick: true
@@ -112,7 +120,6 @@ class Calculator extends Component {
   enterNumber  = (number) => {
 
     if (this.state.display === 0 || this.state.display === "0") {
-      console.log("should run")
       this.state.display = ''
     }
 
@@ -128,7 +135,6 @@ class Calculator extends Component {
     }
 
     else if ( !isNaN(this.state.display) || this.state.display === '' ) {
-      console.log("should also run", number)
       number = this.state.display+""+number
       number = this.checkOverflow(number)
       this.setState({
@@ -141,7 +147,7 @@ class Calculator extends Component {
 
 
   checkOverflow = (display) => {
-    if ( (display+"").length > 9 ) {
+    if ( (display+"").length > 15 ) {
       return "Overflow Error"
     }
     else {
@@ -225,8 +231,8 @@ class Calculator extends Component {
   }
 
   addDecimal  = () => {
-    if (this.state.display > 0 || this.state.display < 0) {
-      if (!this.state.display.includes(".")) {
+    if (!isNaN(this.state.display)) {
+      if ( !(this.state.display+"").includes(".")) {
         let display = this.state.display+''+'.'
         display = this.checkOverflow(display)
         
