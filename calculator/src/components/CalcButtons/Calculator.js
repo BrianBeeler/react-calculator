@@ -76,6 +76,13 @@ class Calculator extends Component {
     )
   }
 
+  
+  /**
+   * Helper function that applies the stored operation, and changes the state
+   * 
+   */
+
+
   applyOperation() {
  
 
@@ -98,7 +105,6 @@ class Calculator extends Component {
       newDisplay = (1*this.state.operationNumber) % (1*this.state.display)
     }
     
-    
 
     newDisplay = this.checkOverflow(newDisplay)
 
@@ -115,7 +121,11 @@ class Calculator extends Component {
     })
   }
 
-    
+  /**
+   * The functionality used when a number key is pressed, changes state
+   *  
+   * @param {*} number - the number pressed on the calculator
+   */  
 
   enterNumber  = (number) => {
 
@@ -145,6 +155,10 @@ class Calculator extends Component {
 
   }
 
+  /**
+   * Helper to change display to an overflow area if the display is too long
+   * @param {*} display 
+   */
 
   checkOverflow = (display) => {
     if ( (display+"").length > 15 ) {
@@ -154,6 +168,10 @@ class Calculator extends Component {
       return display
     }
   }
+
+  /**
+   * Resets the contents of calculator display
+   */
 
   allClear = () => {
     this.setState({
@@ -165,6 +183,10 @@ class Calculator extends Component {
     console.log("Allclear")
   }
 
+  /**
+   * This is the funcationality for the minus sign on the calculator
+   */
+
   reverseSign = () => {
     let display = this.state.display*-1
     display = this.checkOverflow(display)
@@ -174,6 +196,10 @@ class Calculator extends Component {
     })
 
   }
+
+  /**
+   *  This is the functionality for the modulus button on the calculator
+   */
 
   applyModulus  = () => {
 
@@ -186,6 +212,10 @@ class Calculator extends Component {
     })
   }
 
+  /**
+   * This is the functionality for the addition button on the calculator
+   */
+
   applyAddition  = () => {
 
     if (this.state.operationNumber && this.state.currentOperator) {
@@ -196,6 +226,11 @@ class Calculator extends Component {
       currentOperator: 'addition'
     })
   }
+
+
+  /**
+   *  This is the functionality for multiplication button on the calculator
+   */
 
   applyMultiplication  = () => {
 
@@ -208,6 +243,11 @@ class Calculator extends Component {
     })
   }
 
+
+  /**
+   * This is the functionality for the subtraction button, on the calculator
+   */
+
   applySubtraction  = () => {
 
     if (this.state.operationNumber && this.state.currentOperator) {
@@ -219,6 +259,10 @@ class Calculator extends Component {
     })
   }
 
+  /**
+   * This is the functionality for the division button on the calculator
+   */
+
   applyDevision = () => {
 
     if (this.state.operationNumber && this.state.currentOperator) {
@@ -229,6 +273,10 @@ class Calculator extends Component {
       currentOperator: 'division'
     })
   }
+
+  /**
+   * This is the function for adding a decimal point to the display
+   */
 
   addDecimal  = () => {
     if (!isNaN(this.state.display)) {
@@ -243,7 +291,9 @@ class Calculator extends Component {
     }
   }
 
-
+  /**
+   * This is the handler for when the equal sign is clicked
+   */
   applyEquals = () => {
 
     if (this.state.operationNumber && this.state.currentOperator) {
@@ -253,13 +303,12 @@ class Calculator extends Component {
       currentOperator: null,
       operationNumber: null,
     })
-
-    console.log("apply equals")
+\
   }
 
 };
 
-// Click Handlers
+
 
 Calculator.propTypes = {};
 
